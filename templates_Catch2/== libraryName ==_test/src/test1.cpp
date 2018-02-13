@@ -3,5 +3,5 @@
 #include <<%= libraryName %>/<%= libraryName %>.h>
 
 TEST_CASE("<%= libraryName %>_api_foobar returns the ultimate result","[<%= libraryName %>_api_foobar]") {
-    REQUIRE(42 == <%= libraryName %>_api());
+    REQUIRE(12345 == <%= libraryName %>_api());
 }
