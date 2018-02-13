@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.5)
-project(<%= libraryName2 %>_test)
+project(<%= libraryName %>_test)
 
 find_package(GTest REQUIRED)
-find_package(<%= libraryName2 %> REQUIRED)
+find_package(<%= libraryName %> REQUIRED)
 
-add_executable(${PROJECT_NAME} test1.cpp)
+add_executable(${PROJECT_NAME} src/test1.cpp)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_14)
 
 target_link_libraries(${PROJECT_NAME}
   PRIVATE
-    <%= libraryName2 %>::<%= libraryName2 %>
+    <%= libraryName %>::<%= libraryName %>
     GTest::Main
 )
 

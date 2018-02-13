@@ -1,44 +1,29 @@
-# Slush Slush-cmake [![Build Status](https://secure.travis-ci.org/julian-becker/slush-slush-cmake.png?branch=master)](https://travis-ci.org/julian-becker/slush-slush-cmake) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-slush-cmake.png)](http://badges.enytc.com/for/npm/slush-slush-cmake)
+# Slush cmake-library [![Build Status](https://secure.travis-ci.org/julian-becker/slush-cmake-library.png?branch=master)](https://travis-ci.org/julian-becker/slush-cmake-library) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-cmake-library.png)](http://badges.enytc.com/for/npm/slush-cmake-library)
 
-> A generator for a cmake superproject
-
+> A generator for a cmake library
 
 ## Getting Started
 
-Install `slush-cmake` globally:
+Install `slush-cmake-library` globally:
 
 ```bash
-$ npm install -g slush-cmake
+$ npm install -g slush-cmake-library
 ```
 
 ### Usage
 
-Create a new folder for your project:
+Run the generator from within your CMake superproject to create a library in a subfolder:
 
 ```bash
-$ mkdir my-slush-cmake
+$ slush cmake-library
 ```
-
-Run the generator from within the new folder:
-
-```bash
-$ cd my-slush-cmake && slush cmake
-```
-
-## Getting To Know Slush
-
-Slush is a tool that uses Gulp for project scaffolding.
-
-Slush does not contain anything "out of the box", except the ability to locate installed slush generators and to run them with liftoff.
-
-To find out more about Slush, check out the [documentation](https://github.com/slushjs/slush).
 
 ## Contributing
 
-See the [CONTRIBUTING Guidelines](https://github.com/julian-becker/slush-cmake/blob/master/CONTRIBUTING.md)
+See the [CONTRIBUTING Guidelines](https://github.com/julian-becker/slush-cmake-library/blob/master/CONTRIBUTING.md)
 
 ## Support
-If you have any problem or suggestion please open an issue [here](https://github.com/julian-becker/slush-cmake/issues).
+If you have any problem or suggestion please open an issue [here](https://github.com/julian-becker/slush-cmake-library/issues).
 
 ## License
 

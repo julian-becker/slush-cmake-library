@@ -45,8 +45,7 @@ var defaults = (function () {
 
     return {
         appName: workingDirName,
-        libraryName1: 'mylibA',
-        libraryName2: 'mylibB',
+        libraryName: 'mylib',
         authorName: user.name || '',
         authorEmail: user.email || ''
     };
@@ -54,23 +53,15 @@ var defaults = (function () {
 
 gulp.task('default', function (done) {
     var prompts = [{
-        name: 'libraryName1',
+        name: 'libraryName',
         message: 'Name of dummy library 1',
-        default: defaults.libraryName1
+        default: defaults.libraryName
     }, {
-        name: 'libraryName2',
-        message: 'Name of dummy library 2',
-        default: defaults.libraryName2
-    }, {
-        name: 'appName',
-        message: 'Name for a hello-world application using ?',
-        default: defaults.appName
-    }, {
-        name: 'appDescription',
+        name: 'libraryDescription',
         message: 'What is the description?'
     }, {
-        name: 'appVersion',
-        message: 'What is the version of your project?',
+        name: 'libraryVersion',
+        message: 'What is the version of your new library?',
         default: '0.1.0'
     }, {
         name: 'authorName',
@@ -92,6 +83,7 @@ gulp.task('default', function (done) {
             if (!answers.moveon) {
                 return done();
             }
+            answers.LIBRARYNAME = answers.libraryName.toUpperCase();
             answers.appNameSlug = _.slugify(answers.appName);
             gulp.src(__dirname + '/templates/**')
                 .pipe(replace('${','_UGLY_OPENBRACE_'))
@@ -105,12 +97,12 @@ gulp.task('default', function (done) {
                     }
                     path.dirname  = path.dirname
                       .replace(/==(\s*appName\s*)==/g, answers.appName)
-                      .replace(/==(\s*libraryName1\s*)==/g, answers.libraryName1)
-                      .replace(/==(\s*libraryName2\s*)==/g, answers.libraryName2);
+                      .replace(/==(\s*libraryName\s*)==/g, answers.libraryName)
+                      .replace(/==(\s*libraryName\s*)==/g, answers.libraryName);
                     path.basename = path.basename
                       .replace(/==(\s*appName\s*)==/g, answers.appName)
-                      .replace(/==(\s*libraryName1\s*)==/g, answers.libraryName1)
-                      .replace(/==(\s*libraryName2\s*)==/g, answers.libraryName2);
+                      .replace(/==(\s*libraryName\s*)==/g, answers.libraryName)
+                      .replace(/==(\s*libraryName\s*)==/g, answers.libraryName);
                 }))
                 .pipe(conflict('./'))
                 .pipe(gulp.dest('./'))
