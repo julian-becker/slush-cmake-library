@@ -54,11 +54,11 @@ var defaults = (function () {
 gulp.task('default', function (done) {
     var prompts = [{
         name: 'libraryName',
-        message: 'Name of dummy library 1',
+        message: 'Name of your new library?',
         default: defaults.libraryName
     }, {
         name: 'libraryDescription',
-        message: 'What is the description?'
+        message: 'What is the description for this library?'
     }, {
         name: 'libraryVersion',
         message: 'What is the version of your new library?',
@@ -72,6 +72,18 @@ gulp.task('default', function (done) {
         message: 'What is the author email?',
         default: defaults.authorEmail
     }, {
+        type: 'list',
+        name: 'testingFramework',
+        message: 'What is your preferred testing framework?',
+        choices: ['GoogleTest', 'Catch2'],
+        default: 'Catch2'
+    }, {
+        type: 'list',
+        name: 'license',
+        message: 'Choose your license type',
+        choices: ['MIT', 'BSD', 'UNLICENSE'],
+        default: 'UNLICENSE'
+    }, {
         type: 'confirm',
         name: 'moveon',
         message: 'Continue?'
@@ -83,9 +95,20 @@ gulp.task('default', function (done) {
             if (!answers.moveon) {
                 return done();
             }
+
+            var d = new Date();
+            answers.year = d.getFullYear();
+            answers.date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
             answers.LIBRARYNAME = answers.libraryName.toUpperCase();
             answers.appNameSlug = _.slugify(answers.appName);
-            gulp.src(__dirname + '/templates/**')
+
+            var files = [
+                __dirname + '/templates/**',
+                __dirname + '/templates_' + answers.testingFramework + '/**',
+                __dirname + '/templates_license_' + answers.license + '/**'
+            ];
+
+            gulp.src(files)
                 .pipe(replace('${','_UGLY_OPENBRACE_'))
                 .pipe(replace('}','_UGLY_CLOSINGBRACE_'))
                 .pipe(template(answers))
