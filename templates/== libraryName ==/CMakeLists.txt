@@ -13,9 +13,8 @@ target_include_directories(${PROJECT_NAME}
 
 include(GenerateExportHeader)
 generate_export_header(${PROJECT_NAME}
-  EXPORT_FILE_NAME ${CMAKE_BINARY_DIR}/include/${PROJECT_NAME}/export.h
-  EXPORT_MACRO_NAME <%= LIBRARYNAME %>_API
-)
+    EXPORT_FILE_NAME  ${CMAKE_BINARY_DIR}/include/${PROJECT_NAME}/export.h
+    EXPORT_MACRO_NAME <%= LIBRARYNAME %>_API)
 
 include(GNUInstallDirs)
 
@@ -28,6 +27,6 @@ install(
 
 install(DIRECTORY include/${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(DIRECTORY ${CMAKE_BINARY_DIR}/include/${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-install(EXPORT <%= libraryName %>Config DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+install(EXPORT    ${PROJECT_NAME}Config DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
 
 add_subdirectory(doc)
