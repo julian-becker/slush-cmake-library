@@ -1,7 +1,7 @@
 {
   "name": "slush-cmake-library",
   "description": "A generator for a cmake library",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/julian-becker/slush-cmake-library",
   "author": {
     "name": "Julian Becker",
